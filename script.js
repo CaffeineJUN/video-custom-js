@@ -14,6 +14,23 @@ const speedOptions = document.querySelector('.speed-options')
 const picInPicBtn = document.querySelector('.pic-in-pic span')
 const fullscreenBtn = document.querySelector('.fullscreen i')
 
+let timer
+
+const hideControls = () => {
+    if (mainVideo.paused) return
+    timer = setTimeout(() => {
+        container.classList.remove('show-controls')
+    }, 3000)
+}
+
+hideControls()
+
+container.addEventListener('mousemove', () => {
+    container.classList.add('show-controls')
+    clearTimeout(timer)
+    hideControls()
+})
+
 const formatTime = time => {
     let seconds = Math.floor(time % 60),
         minutes = Math.floor(time / 60) % 60,
