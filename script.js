@@ -8,6 +8,8 @@ const skipForward = document.querySelector('.skip-forward i')
 const playPauseBtn = document.querySelector('.play-pause i')
 const speedBtn = document.querySelector('.playback-speed span')
 const speedOptions = document.querySelector('.speed-options')
+const picInPicBtn = document.querySelector('.pic-in-pic span')
+const fullscreenBtn = document.querySelector('.fullscreen i')
 
 mainVideo.addEventListener('timeupdate', e => {
     let {currentTime, duration} = e.target
@@ -51,6 +53,20 @@ document.addEventListener('click', e => {
     if (e.target.tagName !== 'SPAN' || e.target.className !== 'material-symbols-rounded') {
         speedOptions.classList.remove('show')
     }
+})
+
+picInPicBtn.addEventListener('click', () => {
+    mainVideo.requestPictureInPicture()
+})
+
+fullscreenBtn.addEventListener('click', () => {
+    container.classList.toggle('fullscreen')
+    if (document.fullscreenElement) {
+        fullscreenBtn.classList.replace('fa-compress', 'fa-expand')
+        return document.exitFullscreen()
+    }
+    fullscreenBtn.classList.replace('fa-expand', 'fa-compress')
+    container.requestFullscreen()
 })
 
 skipBackward.addEventListener('click', () => {
