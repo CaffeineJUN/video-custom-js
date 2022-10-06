@@ -147,6 +147,38 @@ body,
     font-family: 'Open sans';
 }
 
+.playback-content {
+    position: relative;
+}
+
+.playback-content .speed-options {
+    position: absolute;
+    background: #fff;
+    opacity: 0;
+    bottom: 40px;
+    left: -40px;
+    width: 95px;
+    list-style: none;
+    border-radius: 4px;
+    transition: opacity 0.13s ease;
+}
+
+.playback-content button:hover ~ .speed-options {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.speed-options li {
+    font-size: 14px;
+    padding: 5px 0 5px 15px;
+    cursor: pointer;
+}
+
+.speed-options li.active {
+    color: #fff;
+    background-color: #2289ff;
+}
+
 .container video {
     width: 100%;
 }
