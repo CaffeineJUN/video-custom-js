@@ -30,10 +30,10 @@ body,
     border-radius: 5px;
 }
 
-.container.fullscreen {
+/* .container.fullscreen {
     max-width: 100%;
     width: 100%;
-}
+} */
 
 .wrapper {
     position: absolute;
