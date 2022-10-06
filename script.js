@@ -6,6 +6,8 @@ const volumeSlider = container.querySelector('.left input')
 const skipBackward = document.querySelector('.skip-backward i')
 const skipForward = document.querySelector('.skip-forward i')
 const playPauseBtn = document.querySelector('.play-pause i')
+const speedBtn = document.querySelector('.playback-speed span')
+const speedOptions = document.querySelector('.speed-options')
 
 mainVideo.addEventListener('timeupdate', e => {
     let {currentTime, duration} = e.target
@@ -30,6 +32,24 @@ volumeSlider.addEventListener('input', e => {
         volumeBtn.classList.replace('fa-volume-high', 'fa-volume-xmark')
     } else {
         volumeBtn.classList.replace('fa-volume-xmark', 'fa-volume-high')
+    }
+})
+
+speedBtn.addEventListener('click', () => {
+    speedOptions.classList.toggle('show')
+})
+
+speedOptions.querySelectorAll('li').forEach(option => {
+    option.addEventListener('click', () => {
+        mainVideo.playbackRate = option.dataset.speed
+        speedOptions.querySelector('.active').classList.remove('active')
+        option.classList.add('active')
+    })
+})
+
+document.addEventListener('click', e => {
+    if (e.target.tagName !== 'SPAN' || e.target.className !== 'material-symbols-rounded') {
+        speedOptions.classList.remove('show')
     }
 })
 
